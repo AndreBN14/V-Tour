@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-inspector@^0.9.3/dist/aframe-inspector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@3.3.0/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+    <a-scene physics="gravity: -9.8">
+      <!-- Luz ambiental más intensa -->
+      <a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
+
+      <!-- Luz direccional más intensa y ajustada -->
+      <a-light type="directional" color="#ffffff" intensity="2" position="0 10 10"></a-light>
+
+      <!-- Luz puntual para iluminar el modelo directamente -->
+      <a-light type="point" color="#ffffff" intensity="1.5" position="0 5 0"></a-light>
+
+
+      <!-- Cielo claro -->
+      <a-sky color="#AAAAFF"></a-sky>
+
+      <!-- Importa el modelo algo5.glb -->
+      <a-assets>
+        <a-asset-item id="model-glb" src="assets/estadio.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- Agregar el modelo a la escena con colisiones -->
+      <a-entity gltf-model="#model-glb" position="0 0 0" scale="1 1 1" static-body></a-entity>
+
+      <!-- Cámara (usuario) con colisiones -->
+      <a-entity camera position="0 1.6 5" look-controls wasd-controls dynamic-body></a-entity>
+    </a-scene>
+  </body>
+</html>
