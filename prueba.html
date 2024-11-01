@@ -22,13 +22,13 @@
   <body>
     <a-scene physics="gravity: -9.8">
       <!-- Luces y modelo -->
-      <a-light type="ambient" color="#ffffff" intensity="1.5"></a-light>
-      <a-light type="directional" color="#ffffff" intensity="2" position="0 10 10"></a-light>
-      <a-light type="point" color="#ffffff" intensity="1.5" position="0 5 0"></a-light>
+      <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
+      <a-light type="directional" color="#ffffff" intensity="1" position="0 10 10"></a-light>
+      <a-light type="point" color="#ffffff" intensity="0.5" position="0 5 0"></a-light>
       <a-sky color="#AAAAFF"></a-sky>
 
       <a-assets>
-        <a-asset-item id="model-glb" src="assets/estadio2.glb"></a-asset-item>
+        <a-asset-item id="model-glb" src="assets/estadio3.glb"></a-asset-item>
         <audio id="cancion1" src="audio/cancion1.mp3"></audio>
         <audio id="cancion2" src="audio/cancion2.mp3"></audio>
         <audio id="cancion3" src="audio/cancion3.mp3"></audio>
@@ -37,7 +37,7 @@
       <a-entity gltf-model="#model-glb" position="0 0 0" scale="1 1 1" static-body></a-entity>
 
       <!-- Cámara con cursor para raycasting -->
-      <a-entity id="camara" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+      <a-entity id="camara" camera wasd-controls look-controls position="0 3 0"></a-entity>
       <a-entity cursor="rayOrigin: mouse" raycaster="objects: .raycastable"></a-entity>
         <a-cursor></a-cursor>
       </a-entity>
