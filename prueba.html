@@ -20,6 +20,7 @@
     </style>
   </head>
   <body>
+    
     <a-scene physics="gravity: -9.8">
       <!-- Luces y modelo -->
       <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
@@ -28,13 +29,16 @@
       <a-sky color="#AAAAFF"></a-sky>
 
       <a-assets>
-        <a-asset-item id="model-glb" src="assets/estadio3.glb"></a-asset-item>
+        <a-asset-item id="model-glb" src="assets/Segundo.glb"></a-asset-item>
+        <a-asset-item id="model_2-glb" src="assets/santo_Domingo.glb"></a-asset-item>
+
         <audio id="cancion1" src="audio/cancion1.mp3"></audio>
         <audio id="cancion2" src="audio/cancion2.mp3"></audio>
         <audio id="cancion3" src="audio/cancion3.mp3"></audio>
       </a-assets>
 
       <a-entity gltf-model="#model-glb" position="0 0 0" scale="1 1 1" static-body></a-entity>
+      <a-entity gltf-model="#model_2-glb" position="0 0.1 70" scale="0.3 0.3 0.3" rotation="0 135 0" static-body></a-entity>
 
       <!-- Cámara con cursor para raycasting -->
       <a-entity id="camara" camera wasd-controls look-controls position="0 3 0"></a-entity>
