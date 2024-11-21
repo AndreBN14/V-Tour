@@ -4,6 +4,10 @@
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-inspector@^0.9.3/dist/aframe-inspector.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@3.3.0/dist/aframe-physics-system.min.js"></script>
+    <script src="script_Paneles/highlight.js"></script>
+    <script src="script_Paneles/info-panel.js"></script>
+    <script src="script_Paneles/panel_auxiliar.js"></script>
+    <script src="script_Musica/control_Canciones.js" defer></script>
     <style>
       #botonVerCanciones {
         position: fixed;
@@ -20,14 +24,14 @@
     </style>
   </head>
   <body>
-    
     <a-scene physics="gravity: -9.8">
-      <!-- Luces y modelo -->
+      <!-- Luces y cielo -->
       <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
       <a-light type="directional" color="#ffffff" intensity="1" position="0 10 10"></a-light>
       <a-light type="point" color="#ffffff" intensity="0.5" position="0 5 0"></a-light>
       <a-sky color="#AAAAFF"></a-sky>
 
+      <!-- Modelos -->
       <a-assets>
         <a-asset-item id="model-glb" src="assets/Segundo.glb"></a-asset-item>
         <a-asset-item id="model_2-glb" src="assets/santo_Domingo.glb"></a-asset-item>
@@ -37,6 +41,43 @@
         <audio id="cancion1" src="audio/cancion1.mp3"></audio>
         <audio id="cancion2" src="audio/cancion2.mp3"></audio>
         <audio id="cancion3" src="audio/cancion3.mp3"></audio>
+
+        <!-- Imágenes -->
+        <img id="img1" src="imagenes/image1.jpg">
+        <img id="img2" src="imagenes/image2.jpg">
+        <img id="img3" src="imagenes/image3.jpg">
+        
+        <!-- Imágenes -->
+        <img id="puentePiedra" src="imagenes/puentePiedra1.jpg" />
+        <img id="puentePiedraPoster" src="imagenes/puentePiedra_Poster.jpg" />
+        <img id="huallamarca" src="imagenes/huaca1.jpg" />
+        <img id="huallamarcaPoster" src="imagenes/huaca_Poster.jpg" />
+        <img id="santoDomingo" src="imagenes/santoDomingo.jpg" />
+        <img id="santoDomingoPoster" src="imagenes/santoDomingoPoster.jpg" />
+
+        <!-- Mixins -->
+        <a-mixin
+          id="frame"
+          geometry="primitive: plane; width: 1.8; height: 2.4"
+          material="color: white; shader: flat"
+          animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+          animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+        ></a-mixin>
+
+        <a-mixin
+          id="poster"
+          geometry="primitive: plane; width:1.66; height: 2.32
+          material="shader: flat"
+          position="0 0 0.005"
+        ></a-mixin>
+
+        <a-mixin
+          id="infoImage"
+          geometry="primitive: plane; width: 1.5; height: 0.81"
+          material="shader: flat; transparent: true"
+          position="0 0.495 0.002"
+        ></a-mixin>
+        
       </a-assets>
 
       <a-entity gltf-model="#model-glb" position="0 0 0" scale="1 1 1" static-body></a-entity>
@@ -44,12 +85,11 @@
       <a-entity gltf-model="#model_3-glb" position="0 0.1 70" scale="0.7 0.7 0.7" rotation="0 90 0" static-body></a-entity>
       <a-entity gltf-model="#model_4-glb" position="75 0.1 -37" scale="1 1 1.1" rotation="0 0 0" static-body></a-entity>
 
-      <!-- Cámara con cursor para raycasting -->
+
+
+      <!-- Cámara -->
       <a-entity id="camara" camera wasd-controls look-controls position="0 3 0"></a-entity>
       <a-entity cursor="rayOrigin: mouse" raycaster="objects: .raycastable"></a-entity>
-        <a-cursor></a-cursor>
-      </a-entity>
-      
 
       <!-- Lista de Canciones -->
       <a-entity id="listaCanciones" visible="false">
@@ -68,122 +108,133 @@
       <a-entity id="panelMusica" visible="false">
         <a-text id="tituloCancion" value="Reproduciendo: " position="-0.5 0.4 0" color="#FFF" width="2"></a-text>
         <a-entity position="0 -0.3 0">
-          <a-entity id="botonReproducir" position="-0.5 0.5 0" geometry="primitive: plane; width: 0.3; height: 0.1" material="color: green" class="raycastable">
+          <a-entity id="botonReproducir" position="-0.5 0.5 0" geometry="primitive: plane; width: 0.4; height: 0.1" material="color: green" class="raycastable">
             <a-text value="Reproducir" align="center" color="#FFF" position="0 0 0.01" width="1.5"></a-text>
           </a-entity>
-          <a-entity id="botonPausar" position="0 0.5 0" geometry="primitive: plane; width: 0.3; height: 0.1" material="color: green" class="raycastable">
+          <a-entity id="botonPausar" position="0 0.5 0" geometry="primitive: plane; width: 0.4; height: 0.1" material="color: green" class="raycastable">
             <a-text value="Pausar" align="center" color="#FFF" position="0 0 0.01" width="1.5"></a-text>
           </a-entity>
-          <a-entity id="botonDetener" position="0.5 0.5 0" geometry="primitive: plane; width: 0.3; height: 0.1" material="color: green" class="raycastable">
+          <a-entity id="botonDetener" position="0.5 0.5 0" geometry="primitive: plane; width: 0.4; height: 0.1" material="color: green" class="raycastable">
             <a-text value="Detener" align="center" color="#FFF" position="0 0 0.01" width="1.5"></a-text>
           </a-entity>
         </a-entity>
       </a-entity>
+
+
+      <a-entity
+        id="background"
+        position="0 0 0"
+        geometry="primitive: sphere; radius: 2.0"
+        material="color: red; side: back; shader: flat"
+        scale="0.001 0.001 0.001"
+        visible="false"
+        class="raycastable"
+      ></a-entity>
+
+      <!-- Cámara -->
+      <a-entity
+        position="0 1.6 0"
+        camera
+        look-controls="magicWindowTrackingEnabled: false; touchEnabled: true; mouseEnabled: true"
+        wasd-controls
+      >
+        <a-entity
+          id="fadeBackground"
+          geometry="primitive: sphere; radius: 2.5"
+          material="color: #ff0000; blending: normal"
+
+
+          visible="false"
+        ></a-entity>
+      </a-entity>
+
+      <!-- Interfaz de usuario -->
+      <a-entity id="ui" position="0 1.6 -2.5">
+        <!-- Menú -->
+        <a-entity id="menu" highlight>
+          <!-- Botones -->
+          <a-entity
+            id="puentePiedraButton"
+            position="65 0.1 0"
+            mixin="frame"
+            rotation="0 270 0" 
+
+            class="raycastable menu-button"
+          >
+            <a-entity material="src: #puentePiedraPoster;" mixin="poster"></a-entity>
+          </a-entity>
+          <a-entity
+            id="huallamarcaButton"
+            position="0 0.5 60"
+            mixin="frame"
+            rotation="0 180 0" 
+
+            class="raycastable menu-button"
+          >
+            <a-entity material="src: #huallamarcaPoster;" mixin="poster"></a-entity>
+          </a-entity>
+          <a-entity
+            id="santoDomingoButton"
+            position="0 0.5 -50"
+            mixin="frame"
+            rotation="0 0 0" 
+
+            class="raycastable menu-button"
+          >
+            <a-entity material="src: #santoDomingoPoster;" mixin="poster"></a-entity>
+          </a-entity>
+        </a-entity>
+
+        <!-- Panel de Información -->
+        <a-entity
+          id="infoPanel"
+          position="0 0 0.5"
+          info-panel
+          visible="false"
+          scale="0.001 0.001 0.001"
+          geometry="primitive: plane; width: 1.5; height: 1.8"
+          material="color: #333333; shader: flat; transparent: false"
+          class="raycastable"
+        >
+          <!-- Contenido del Panel -->
+          <a-entity
+            id="puentePiedraInfoImage"
+            mixin="infoImage"
+            material="src: #puentePiedra"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="huallamarcaInfoImage"
+            mixin="infoImage"
+            material="src: #huallamarca"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="santoDomingoInfoImage"
+            mixin="infoImage"
+            material="src: #santoDomingo"
+            visible="false"
+          ></a-entity>
+
+          <!-- Títulos y Descripciones -->
+          <a-entity
+            id="infoTitle"
+            position="-0.68 -0.1 0"
+            text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Titulo"
+          ></a-entity>
+          <a-entity
+            id="infoDescription"
+            position="-0.68 -0.2 0"
+            text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Descripcion"
+          ></a-entity>
+        </a-entity>
+      </a-entity>
+
+
+
+      
     </a-scene>
 
     <button id="botonVerCanciones">Ver Canciones</button>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const listaCanciones = document.querySelector('#listaCanciones');
-        const panelMusica = document.querySelector('#panelMusica');
-        const botonVerCanciones = document.querySelector('#botonVerCanciones');
-        const camara = document.querySelector('#camara');
-        const tituloCancion = document.querySelector('#tituloCancion');
-        const canciones = {
-          cancion1: document.querySelector('#cancion1'),
-          cancion2: document.querySelector('#cancion2'),
-          cancion3: document.querySelector('#cancion3')
-        };
-        let cancionActual = null;
-        let listaVisible = false;
-
-        // Función para alternar la visibilidad de la lista de canciones
-        function alternarListaCanciones() {
-          listaVisible = !listaVisible;
-          if (listaVisible) {
-            // Posicionar la lista frente al usuario
-            const posicionCamara = new THREE.Vector3();
-            const direccionCamara = new THREE.Vector3();
-            camara.object3D.getWorldPosition(posicionCamara);
-            camara.object3D.getWorldDirection(direccionCamara);
-
-            posicionCamara.add(direccionCamara.multiplyScalar(-1.2));
-            listaCanciones.setAttribute('position', {
-              x: posicionCamara.x,
-              y: posicionCamara.y,
-              z: posicionCamara.z
-            });
-
-            // Orientar la lista hacia el usuario
-            const rotacion = camara.object3D.rotation;
-            listaCanciones.setAttribute('rotation', {
-              x: rotacion.x * (180 / Math.PI),
-              y: rotacion.y * (180 / Math.PI),
-              z: rotacion.z * (180 / Math.PI)
-            });
-            listaCanciones.setAttribute('visible', 'true');
-
-            // Posicionar el panel de música debajo de la lista
-            panelMusica.setAttribute('position', {
-              x: posicionCamara.x,
-              y: posicionCamara.y - 0.8,
-              z: posicionCamara.z
-            });
-            panelMusica.setAttribute('rotation', {
-              x: rotacion.x * (180 / Math.PI),
-              y: rotacion.y * (180 / Math.PI),
-              z: rotacion.z * (180 / Math.PI)
-            });
-            panelMusica.setAttribute('visible', 'true');
-
-            botonVerCanciones.innerText = "Ocultar Canciones";
-          } else {
-            // Ocultar lista y panel de música
-            listaCanciones.setAttribute('visible', 'false');
-            panelMusica.setAttribute('visible', 'false');
-            botonVerCanciones.innerText = "Ver Canciones";
-          }
-        }
-
-        // Función para reproducir una canción
-        function reproducirCancion(idCancion) {
-          if (cancionActual && !cancionActual.paused) cancionActual.pause();
-          cancionActual = canciones[idCancion];
-          cancionActual.play();
-          tituloCancion.setAttribute('value', 'Reproduciendo: ' + idCancion);
-        }
-
-        // Función para pausar la canción actual
-        function pausarCancion() {
-          if (cancionActual) cancionActual.pause();
-        }
-
-        // Función para detener la canción actual y reiniciar
-        function detenerCancion() {
-          if (cancionActual) {
-            cancionActual.pause();
-            cancionActual.currentTime = 0;
-            tituloCancion.setAttribute('value', 'Reproduciendo: ');
-          }
-        }
-
-        // Evento de clic para mostrar/ocultar la lista de canciones
-        botonVerCanciones.addEventListener('click', alternarListaCanciones);
-
-        // Eventos de clic para seleccionar canciones
-        document.querySelector('#botonCancion1').addEventListener('click', () => reproducirCancion('cancion1'));
-        document.querySelector('#botonCancion2').addEventListener('click', () => reproducirCancion('cancion2'));
-        document.querySelector('#botonCancion3').addEventListener('click', () => reproducirCancion('cancion3'));
-
-        // Eventos de clic para controles de música
-        document.querySelector('#botonReproducir').addEventListener('click', () => {
-          if (cancionActual) cancionActual.play();
-        });
-        document.querySelector('#botonPausar').addEventListener('click', pausarCancion);
-        document.querySelector('#botonDetener').addEventListener('click', detenerCancion);
-      });
-    </script>
   </body>
 </html>
-
