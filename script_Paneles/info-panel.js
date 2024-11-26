@@ -60,7 +60,7 @@ AFRAME.registerComponent('info-panel', {
     }
 
     this.el.object3D.visible = true;
-    this.fadeBackgroundEl.object3D.visible = true;
+    // this.fadeBackgroundEl.object3D.visible = true;
 
     if (this.placeImageEl) {
       this.placeImageEl.object3D.visible = false;
