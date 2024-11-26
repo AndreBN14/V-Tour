@@ -7,21 +7,8 @@
     <script src="script_Paneles/highlight.js"></script>
     <script src="script_Paneles/info-panel.js"></script>
     <script src="script_Paneles/panel_auxiliar.js"></script>
-    <script src="script_Musica/control_Canciones.js" defer></script>
-    <style>
-      #botonVerCanciones {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        color: #fff;
-        background-color: orange;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-    </style>
+    <script src="teletransporte.js"></script>
+    <script src="controladorCanciones.js"></script>
   </head>
   <body>
     <a-scene physics="gravity: -9.8">
@@ -33,27 +20,34 @@
 
       <!-- Modelos -->
       <a-assets>
-        <a-asset-item id="model-glb" src="assets/Segundo.glb"></a-asset-item>
+        <a-asset-item id="model-glb" src="assets/museo_Grupo_3.glb"></a-asset-item>
         <a-asset-item id="model_2-glb" src="assets/santo_Domingo.glb"></a-asset-item>
         <a-asset-item id="model_3-glb" src="assets/Huaca.glb"></a-asset-item>
         <a-asset-item id="model_4-glb" src="assets/puente_Piedra.glb"></a-asset-item>
-
-        <audio id="cancion1" src="audio/cancion1.mp3"></audio>
-        <audio id="cancion2" src="audio/cancion2.mp3"></audio>
-        <audio id="cancion3" src="audio/cancion3.mp3"></audio>
-
-        <!-- Imágenes -->
-        <img id="img1" src="imagenes/image1.jpg">
-        <img id="img2" src="imagenes/image2.jpg">
-        <img id="img3" src="imagenes/image3.jpg">
+        <a-asset-item id="model_5-glb" src="assets/matenme.glb"></a-asset-item>
+        <a-asset-item id="model_6-glb" src="assets/francis.glb"></a-asset-item>
+          
+        <audio id="song1" src="audio/cancion1.mp3"></audio>
+        <audio id="song2" src="audio/cancion2.mp3"></audio>
+        <audio id="song3" src="audio/cancion3.mp3"></audio>
+        <audio id="song4" src="audio/puentePiedra.mp3"></audio>
+  
         
         <!-- Imágenes -->
+        <img id="boton_Disco" src="imagenes/boton_Disco.png" />
+        <img id="musica_Fondo" src="imagenes/musica_Fondo.jpg" />
         <img id="puentePiedra" src="imagenes/puentePiedra1.jpg" />
         <img id="puentePiedraPoster" src="imagenes/puentePiedra_Poster.jpg" />
         <img id="huallamarca" src="imagenes/huaca1.jpg" />
         <img id="huallamarcaPoster" src="imagenes/huaca_Poster.jpg" />
         <img id="santoDomingo" src="imagenes/santoDomingo.jpg" />
         <img id="santoDomingoPoster" src="imagenes/santoDomingoPoster.jpg" />
+        <img id="textura_Mapa" src="imagenes/mapa_Fondo.jpg" />
+        <img id="franciscoPoster" src="imagenes/francisco_Poster.png" />
+        <img id="limaPoster" src="imagenes/lima.png" />
+        <img id="centroPoster" src="imagenes/centro.jpg" />
+        <img id="brujula" src="imagenes/brujula.png" />
+
 
         <!-- Mixins -->
         <a-mixin
@@ -66,7 +60,7 @@
 
         <a-mixin
           id="poster"
-          geometry="primitive: plane; width:1.66; height: 2.32
+          geometry="primitive: plane; width:1.66; height: 2.32"
           material="shader: flat"
           position="0 0 0.005"
         ></a-mixin>
@@ -80,46 +74,39 @@
         
       </a-assets>
 
+      <!-- Modelos en la escena -->
       <a-entity gltf-model="#model-glb" position="0 0 0" scale="1 1 1" static-body></a-entity>
-      <a-entity gltf-model="#model_2-glb" position="0 0.1 -70" scale="0.3 0.3 0.3" rotation="0 135 0" static-body></a-entity>
+      <a-entity gltf-model="#model_2-glb" position="0 0.1 -70" scale="0.2 0.2 0.2" rotation="0 135 0" static-body></a-entity>
       <a-entity gltf-model="#model_3-glb" position="0 0.1 70" scale="0.7 0.7 0.7" rotation="0 90 0" static-body></a-entity>
       <a-entity gltf-model="#model_4-glb" position="75 0.1 -37" scale="1 1 1.1" rotation="0 0 0" static-body></a-entity>
-
+      <a-entity gltf-model="#model_6-glb" position="-75 0.1 -5" scale="0.2 0.2 0.2" rotation="0 135 0" static-body></a-entity>
+    <!-- Paneles de control de canciones -->
+          <!--  huaca -->
+          <a-entity controlador-canciones="id: panel1; position: -5 3 50; rotation: 0 120 0; songs: #song1, #song2, #song3"></a-entity>
+          <a-entity mapa-interactivo="idMapa: mapa1; position: -5.9 3 47; rotation: 0 90 0"></a-entity>
+      
+                <!--  Convento santo domingo -->
+          <a-entity controlador-canciones="id: panel2; position:  5 3 -50; rotation: 0 -60 0; songs: #song1, #song2, #song4"></a-entity>
+          <a-entity mapa-interactivo="idMapa: mapa2; position: 5.9 3 -47; rotation: 0 -90 0"></a-entity>
+      
+                <!--  Puente de piedra -->
+          <a-entity controlador-canciones="id: panel3; position: 50 3 5; rotation: 0 -150 0; songs: #song2, #song3, #song4"></a-entity>
+          <a-entity mapa-interactivo="idMapa: mapa4; position: 47 3 5.9; rotation: 0 180 0"></a-entity>
+      
+                <!--  San francisco -->
+          <a-entity controlador-canciones="id: panel4; position: -50 3 -5; rotation: 0 30 0; songs: #song1, #song3, #song4"></a-entity>
+          <a-entity mapa-interactivo="idMapa: mapa5; position: -47 3 -5.9; rotation: 0 0 0"></a-entity>
+      
+                <!-- Mapa del centro -->
+            <a-entity mapa-interactivo="idMapa: mapa3; position: 0 3 -2; rotation: 0 0 0"></a-entity>
+      
 
 
       <!-- Cámara -->
       <a-entity id="camara" camera wasd-controls look-controls position="0 3 0"></a-entity>
       <a-entity cursor="rayOrigin: mouse" raycaster="objects: .raycastable"></a-entity>
 
-      <!-- Lista de Canciones -->
-      <a-entity id="listaCanciones" visible="false">
-        <a-entity id="botonCancion1" position="-0.8 0 0" geometry="primitive: plane; width: 0.5; height: 0.5" material="color: blue" class="raycastable">
-          <a-text value="A" align="center" position="0 0 0.01" color="#FFF"></a-text>
-        </a-entity>
-        <a-entity id="botonCancion2" position="0 0 0" geometry="primitive: plane; width: 0.5; height: 0.5" material="color: blue" class="raycastable">
-          <a-text value="B" align="center" position="0 0 0.01" color="#FFF"></a-text>
-        </a-entity>
-        <a-entity id="botonCancion3" position="0.8 0 0" geometry="primitive: plane; width: 0.5; height: 0.5" material="color: blue" class="raycastable">
-          <a-text value="C" align="center" position="0 0 0.01" color="#FFF"></a-text>
-        </a-entity>
-      </a-entity>
-
-      <!-- Panel de Control de Música -->
-      <a-entity id="panelMusica" visible="false">
-        <a-text id="tituloCancion" value="Reproduciendo: " position="-0.5 0.4 0" color="#FFF" width="2"></a-text>
-        <a-entity position="0 -0.3 0">
-          <a-entity id="botonReproducir" position="-0.5 0.5 0" geometry="primitive: plane; width: 0.4; height: 0.1" material="color: green" class="raycastable">
-            <a-text value="Reproducir" align="center" color="#FFF" position="0 0 0.01" width="1.5"></a-text>
-          </a-entity>
-          <a-entity id="botonPausar" position="0 0.5 0" geometry="primitive: plane; width: 0.4; height: 0.1" material="color: green" class="raycastable">
-            <a-text value="Pausar" align="center" color="#FFF" position="0 0 0.01" width="1.5"></a-text>
-          </a-entity>
-          <a-entity id="botonDetener" position="0.5 0.5 0" geometry="primitive: plane; width: 0.4; height: 0.1" material="color: green" class="raycastable">
-            <a-text value="Detener" align="center" color="#FFF" position="0 0 0.01" width="1.5"></a-text>
-          </a-entity>
-        </a-entity>
-      </a-entity>
-
+      
 
       <a-entity
         id="background"
@@ -165,9 +152,9 @@
           </a-entity>
           <a-entity
             id="huallamarcaButton"
-            position="0 0.5 60"
+            position="4 1 53"
             mixin="frame"
-            rotation="0 180 0" 
+            rotation="0 240 0" 
 
             class="raycastable menu-button"
           >
@@ -230,11 +217,7 @@
         </a-entity>
       </a-entity>
 
-
-
       
     </a-scene>
-
-    <button id="botonVerCanciones">Ver Canciones</button>
   </body>
 </html>
