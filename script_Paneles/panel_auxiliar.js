@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const puentePiedraButton = document.querySelector("#puentePiedraButton");
   const huallamarcaButton = document.querySelector("#huallamarcaButton");
   const santoDomingoButton = document.querySelector("#santoDomingoButton");
+  const franciscoButton = document.querySelector("#franciscoButton");
+  const instruccionesButton = document.querySelector("#instruccionesButton");
+
+
   // Seleccionar las luces
   const directionalLight = document.querySelector("#directionalLight");
   const ambientLight = document.querySelector("#ambientLight");
@@ -37,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Eventos de clic con posición y rotación específicas
   puentePiedraButton.addEventListener("click", () => {
     showInfoPanel(
-      { x: 64, y: 0.7, z: 0 }, // Posición
+      { x: 50, y: 1, z: 3 }, // Posición
       { x: 0, y: 270, z: 0 }, // Rotación
       "Puente Piedra",
       "Información sobre Puente Piedra."
@@ -46,17 +50,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   huallamarcaButton.addEventListener("click", () => {
     showInfoPanel(
-      { x: -1, y: 0.7, z: 53 }, // Posición
+      { x: -1, y: 1, z: 53 }, // Posición
       { x: 0, y: 180, z: 0 }, // Rotación
       "Huallamarca",
       "Información sobre la Huaca Huallamarca."
     );
   });
 
+  franciscoButton.addEventListener("click", () => {
+    showInfoPanel(
+      { x: -50, y: 1, z: 2 }, // Posición
+      { x: 0, y: 90, z: 0 }, // Rotación
+      "francisco",
+      "Información sobre la francisco."
+    );
+  });
   santoDomingoButton.addEventListener("click", () => {
     showInfoPanel(
-      { x: 0, y: 0.7, z: -49 }, // Posición
+      { x: 0, y: 1, z: -47 }, // Posición
       { x: 0, y: 0, z: 0 }, // Rotación
+      "Santo Domingo",
+      "Información sobre Santo Domingo."
+    );
+  });
+
+  instruccionesButton.addEventListener("click", () => {
+    showInfoPanel(
+      { x: 4, y: 2, z: 3 }, // Posición
+      { x: 0, y: -90, z: 0 }, // Rotación
       "Santo Domingo",
       "Información sobre Santo Domingo."
     );
