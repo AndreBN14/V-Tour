@@ -20,7 +20,7 @@
 
       <!-- Modelos -->
       <a-assets>
-        <a-asset-item id="model-glb" src="assets/museo_Grupo_3.glb"></a-asset-item>
+        <a-asset-item id="model-glb" src="assets/museo111.glb"></a-asset-item>
         <a-asset-item id="model_2-glb" src="assets/santo_Domingo.glb"></a-asset-item>
         <a-asset-item id="model_3-glb" src="assets/Huaca.glb"></a-asset-item>
         <a-asset-item id="model_4-glb" src="assets/puente_Piedra.glb"></a-asset-item>
@@ -44,6 +44,10 @@
         <img id="santoDomingoPoster" src="imagenes/santoDomingoPoster.jpg" />
         <img id="textura_Mapa" src="imagenes/mapa_Fondo.jpg" />
         <img id="franciscoPoster" src="imagenes/francisco_Poster.png" />
+        <img id="francisco1" src="imagenes/francisco.jpg" />
+        <img id="instruccionesPoster" src="imagenes/instruccionesPoster.jpg" />
+        <img id="instrucciones" src="imagenes/instrucciones.jpg" />
+
         <img id="limaPoster" src="imagenes/lima.png" />
         <img id="centroPoster" src="imagenes/centro.jpg" />
         <img id="brujula" src="imagenes/brujula.png" />
@@ -140,36 +144,73 @@
         <!-- Menú -->
         <a-entity id="menu" highlight>
           <!-- Botones -->
+          
           <a-entity
-            id="puentePiedraButton"
-            position="65 0.1 0"
+            id="franciscoButton"
+            position="-50 1 7"
             mixin="frame"
-            rotation="0 270 0" 
-
+            rotation="0 130 0" 
             class="raycastable menu-button"
           >
-            <a-entity material="src: #puentePiedraPoster;" mixin="poster"></a-entity>
+          <a-entity material="src: #franciscoPoster;" mixin="poster"></a-entity>
           </a-entity>
+
+
+
           <a-entity
             id="huallamarcaButton"
             position="4 1 53"
             mixin="frame"
             rotation="0 240 0" 
+            class="raycastable menu-button"
+          >
+          <a-entity material="src: #huallamarcaPoster;" mixin="poster"></a-entity>
+          </a-entity>
+          
 
+          <a-entity
+            id="puentePiedraButton"
+            position="50 1 -1"
+            mixin="frame"
+            rotation="0 310 0" 
+            class="raycastable menu-button"
+          >
+            <a-entity material="src: #puentePiedraPoster;" mixin="poster"></a-entity>
+          </a-entity>
+
+
+          <a-entity
+            id="huallamarcaButton"
+            position="4 1 53"
+            mixin="frame"
+            rotation="0 240 0" 
             class="raycastable menu-button"
           >
             <a-entity material="src: #huallamarcaPoster;" mixin="poster"></a-entity>
           </a-entity>
+
+
           <a-entity
             id="santoDomingoButton"
-            position="0 0.5 -50"
+            position="-4 1 -48"
             mixin="frame"
-            rotation="0 0 0" 
-
+            rotation="0 45 0" 
             class="raycastable menu-button"
           >
             <a-entity material="src: #santoDomingoPoster;" mixin="poster"></a-entity>
           </a-entity>
+
+
+          <a-entity
+            id="instruccionesButton"
+            position="6 1 3"
+            mixin="frame"
+            rotation="0 -90 0" 
+            class="raycastable menu-button"
+          >
+            <a-entity material="src: #instrucciones;" mixin="poster"></a-entity>
+          </a-entity>
+
         </a-entity>
 
         <!-- Panel de Información -->
@@ -184,6 +225,15 @@
           class="raycastable"
         >
           <!-- Contenido del Panel -->
+
+          <a-entity
+            id="franciscoInfoImage"
+            mixin="infoImage"
+            material="src: #francisco1"
+            visible="false"
+           ></a-entity>
+
+
           <a-entity
             id="puentePiedraInfoImage"
             mixin="infoImage"
@@ -196,12 +246,20 @@
             material="src: #huallamarca"
             visible="false"
           ></a-entity>
+
           <a-entity
             id="santoDomingoInfoImage"
             mixin="infoImage"
             material="src: #santoDomingo"
             visible="false"
           ></a-entity>
+
+          <a-entity
+          id="instruccionesInfoImage"
+          mixin="infoImage"
+          material="src: #instruccionesPoster"
+          visible="false"
+        ></a-entity>
 
           <!-- Títulos y Descripciones -->
           <a-entity
