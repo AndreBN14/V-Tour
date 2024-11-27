@@ -36,7 +36,7 @@ AFRAME.registerComponent('info-panel', {
           'La Iglesia de San Francisco se encuentra ubicada en el Centro Histórico de Lima y es uno de los sitios más emblemáticos y turísticos de la ciudad. Es una muestra tangible de la arquitectura y el arte virreinal en el país. La construcción de esta joya arquitectónica estuvo a cargo de la orden franciscana y culminó en el año 1774, después de un siglo de trabajo. ',
       },
       instruccionesButton: {
-        title: 'Instrucciones - Exploración Interactiva',
+        title: 'Instrucciones - Exploracion Interactiva',
         imgEl: document.querySelector('#instruccionesInfoImage'),
         description: `
           Canciones:  
