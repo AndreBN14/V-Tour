@@ -29,6 +29,24 @@ AFRAME.registerComponent('info-panel', {
         description:
           'Puente Piedra, situado al norte de Lima, tiene una rica historia que se remonta al periodo colonial. Su nombre proviene de un antiguo puente construido en piedra que cruzaba el rio Chillón, facilitando el comercio y la conexion entre Lima y el interior del pais. Hoy en dia, el distrito que lleva su nombre es un importante punto de transito y desarrollo urbano en la capital peruana.',
       },
+      franciscoButton: {
+        title: 'San francisco',
+        imgEl: document.querySelector('#franciscoInfoImage'),
+        description:
+          'La Iglesia de San Francisco se encuentra ubicada en el Centro Histórico de Lima y es uno de los sitios más emblemáticos y turísticos de la ciudad. Es una muestra tangible de la arquitectura y el arte virreinal en el país. La construcción de esta joya arquitectónica estuvo a cargo de la orden franciscana y culminó en el año 1774, después de un siglo de trabajo. ',
+      },
+      instruccionesButton: {
+        title: 'Instrucciones - Exploración Interactiva',
+        imgEl: document.querySelector('#instruccionesInfoImage'),
+        description: `
+          Canciones:  
+          1) Los paneles de control te permiten reproducir musica relacionada con la tematica del monumento.  
+          2) Haz clic en los botones correspondientes para cambiar de cancion.  
+      
+          Mapas: 
+          1) Consulta los mapas interactivos para moverte rapidamente por las zonas del museo.
+        `,
+      },
       
     };
 
@@ -83,4 +101,3 @@ AFRAME.registerComponent('info-panel', {
 
   
 });
-
