@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   huallamarcaButton.addEventListener("click", () => {
     showInfoPanel(
-      { x: -1, y: 1, z: 53 }, // Posición
+      { x: -1, y: 0.7, z: 53 }, // Posición
       { x: 0, y: 180, z: 0 }, // Rotación
       "Huallamarca",
       "Información sobre la Huaca Huallamarca."
