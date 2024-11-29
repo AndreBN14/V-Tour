@@ -36,15 +36,24 @@ AFRAME.registerComponent('info-panel', {
           'La Iglesia de San Francisco se encuentra ubicada en el Centro Histórico de Lima y es uno de los sitios más emblemáticos y turísticos de la ciudad. Es una muestra tangible de la arquitectura y el arte virreinal en el país. La construcción de esta joya arquitectónica estuvo a cargo de la orden franciscana y culminó en el año 1774, después de un siglo de trabajo. ',
       },
       instruccionesButton: {
-        title: 'Instrucciones - Exploracion Interactiva',
+        title: 'Instrucciones - Musica',
         imgEl: document.querySelector('#instruccionesInfoImage'),
         description: `
-          Canciones:  
-          1) Los paneles de control te permiten reproducir musica relacionada con la tematica del monumento.  
-          2) Haz clic en los botones correspondientes para cambiar de cancion.  
-      
-          Mapas: 
-          1) Consulta los mapas interactivos para moverte rapidamente por las zonas del museo.
+          Musica:  
+          1) Puedes pulsar los distintos discos para escuchar musica correspondiente a la zona  
+          2) Cada una de las 4 zonas tiene un reproductor de musica
+          3) Una vez detenida una cancion esta se reiniciara
+          Nota. Tenga en cuenta que la funcion de teletransporte apagara la cancion que este escuchando.
+        `,
+      },
+      instrucciones2Button: {
+        title: 'Instrucciones - Zonas de teletransporte',
+        imgEl: document.querySelector('#instrucciones2InfoImage'),
+        description: `
+          Zonas de teletransporte:  
+          1) Puedes pulsar los lugares de las zonas de teletransporte para llegar instantaneamente a las atracciones y al centro del museo 
+          2) Existe un mapa de teletransporte en cada una de las 4 atracciones, asi como en el centro del museo 
+          Nota. Tenga en cuenta que la funcion de teletransporte apagara la cancion que este escuchando.
         `,
       },
       
@@ -101,3 +110,4 @@ AFRAME.registerComponent('info-panel', {
 
   
 });
+
