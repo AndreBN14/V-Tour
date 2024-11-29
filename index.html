@@ -9,8 +9,29 @@
     <script src="script_Paneles/panel_auxiliar.js"></script>
     <script src="teletransporte.js"></script>
     <script src="controladorCanciones.js"></script>
+    <style>
+      /* Estilos para la pantalla de carga */
+      #loadingScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #167faf; /* Fondo negro */
+        color: #fff; /* Texto blanco */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        font-size: 1.5em;
+        z-index: 9999; /* Asegúrate de que quede encima */
+      }
+    </style>
+  
   </head>
   <body>
+    <div id="loadingScreen">Estamos preparando el museo virtual...</div>
+
     <a-scene physics="gravity: -9.8">
       <!-- Luces y cielo -->
       <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
@@ -38,8 +59,8 @@
         <img id="musica_Fondo" src="imagenes/musica_Fondo.jpg" />
         <img id="puentePiedra" src="imagenes/puentePiedra1.jpg" />
         <img id="puentePiedraPoster" src="imagenes/puentePiedra_Poster.jpg" />
-        <img id="huallamarca" src="imagenes/huaca1.jpg" />
-        <img id="huallamarcaPoster" src="imagenes/huaca_Poster.jpg" />
+        <img id="huallamarca" src="imagenes/huaca1.webp" />
+        <img id="huallamarcaPoster" src="imagenes/huaca_Poster.webp" />
         <img id="santoDomingo" src="imagenes/santoDomingo.jpg" />
         <img id="santoDomingoPoster" src="imagenes/santoDomingoPoster.jpg" />
         <img id="textura_Mapa" src="imagenes/mapa_Fondo.jpg" />
@@ -155,6 +176,8 @@
           <a-entity material="src: #franciscoPoster;" mixin="poster"></a-entity>
           </a-entity>
 
+
+
           <a-entity
             id="huallamarcaButton"
             position="4 1 53"
@@ -175,6 +198,9 @@
           >
             <a-entity material="src: #puentePiedraPoster;" mixin="poster"></a-entity>
           </a-entity>
+
+
+
 
           <a-entity
             id="santoDomingoButton"
@@ -226,6 +252,7 @@
             material="src: #puentePiedra"
             visible="false"
           ></a-entity>
+
           <a-entity
             id="huallamarcaInfoImage"
             mixin="infoImage"
@@ -263,5 +290,15 @@
 
       
     </a-scene>
+    <script>
+      // Detectar cuando la escena ha cargado completamente
+      document.querySelector('a-scene').addEventListener('loaded', () => {
+        // Ocultar la pantalla de carga
+        document.getElementById('loadingScreen').style.display = 'none';
+      });
+    </script>
+  
+
+  
   </body>
 </html>
