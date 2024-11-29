@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const santoDomingoButton = document.querySelector("#santoDomingoButton");
   const franciscoButton = document.querySelector("#franciscoButton");
   const instruccionesButton = document.querySelector("#instruccionesButton");
+  const instrucciones2Button = document.querySelector("#instrucciones2Button");
 
 
   // Seleccionar las luces
@@ -78,12 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
     showInfoPanel(
       { x: 4, y: 2, z: 3 }, // Posición
       { x: 0, y: -90, z: 0 }, // Rotación
-      "Santo Domingo",
-      "Información sobre Santo Domingo."
+      "Instrucciones - Musica",
+      "Información de instrucciones."
+    );
+  });
+
+  
+  instrucciones2Button.addEventListener("click", () => {
+    showInfoPanel(
+      { x: -4, y: 2, z: 3 }, // Posición
+      { x: 0, y: 90, z: 0 }, // Rotación
+      "Instrucciones - Mapa interactivo",
+      "Información de mapa interactivo."
     );
   });
 
   // Cerrar el panel solo cuando se haga clic sobre él
   infoPanel.addEventListener("click", closeInfoPanel);
 });
-
