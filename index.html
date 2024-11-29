@@ -3,7 +3,10 @@
   <head>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-inspector@^0.9.3/dist/aframe-inspector.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@3.3.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.8.1/dist/nipplejs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.min.js"></script>
+
     <script src="script_Paneles/highlight.js"></script>
     <script src="script_Paneles/info-panel.js"></script>
     <script src="script_Paneles/panel_auxiliar.js"></script>
@@ -34,15 +37,16 @@
         margin-bottom: 20px;
       }
 
+
     </style>
   
   </head>
   <body>
     <div id="loadingScreen">
-      <img src="imagenes/logo.png" alt="Logo del Museo Virtual" />
+      <img src="imagenes/logo.webp" alt="Logo del Museo Virtual" />
       Estamos preparando el museo virtual...
     </div>
-    
+
     <a-scene physics="gravity: -9.8">
       <!-- Luces y cielo -->
       <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
@@ -58,31 +62,52 @@
         <a-asset-item id="model_4-glb" src="assets/puente_Piedra.glb"></a-asset-item>
         <a-asset-item id="model_5-glb" src="assets/matenme.glb"></a-asset-item>
         <a-asset-item id="model_6-glb" src="assets/francis.glb"></a-asset-item>
-          
+        
+        
         <audio id="song1" src="audio/cancion1.mp3"></audio>
         <audio id="song2" src="audio/cancion2.mp3"></audio>
         <audio id="song3" src="audio/cancion3.mp3"></audio>
-        <audio id="song4" src="audio/puentePiedra.mp3"></audio>
-  
+        <audio id="song4" src="audio/cancion4.mp3"></audio>
+        <audio id="song5" src="audio/cancion5.mp3"></audio>
+        <audio id="song6" src="audio/cancion6.mp3"></audio>
+        <audio id="song7" src="audio/cancion7.mp3"></audio>
+        <audio id="song8" src="audio/cancion8.mp3"></audio>
+
+
+
+
+        <audio id="song_huaca" src="audio/huaca1.mp3"></audio>
+        <audio id="song_Puente" src="audio/puentePiedra1.mp3"></audio>
+        <audio id="song_Domingo" src="audio/santo_Domingo1.mp3"></audio>
+        <audio id="song_Francisco" src="audio/San Francisco1.mp3"></audio>
+
         
         <!-- Imágenes -->
-        <img id="boton_Disco" src="imagenes/boton_Disco.png" />
-        <img id="musica_Fondo" src="imagenes/musica_Fondo.jpg" />
-        <img id="puentePiedra" src="imagenes/puentePiedra1.jpg" />
-        <img id="puentePiedraPoster" src="imagenes/puentePiedra_Poster.jpg" />
+  
+
+        <img id="franciscoPoster" src="imagenes/francisco_Poster.webp" />
+        <img id="francisco1" src="imagenes/francisco.webp" />
+        <img id="santoDomingo" src="imagenes/santoDomingo.webp" />
+        <img id="santoDomingoPoster" src="imagenes/santoDomingoPoster.webp" />
         <img id="huallamarca" src="imagenes/huaca1.webp" />
         <img id="huallamarcaPoster" src="imagenes/huaca_Poster.webp" />
-        <img id="santoDomingo" src="imagenes/santoDomingo.jpg" />
-        <img id="santoDomingoPoster" src="imagenes/santoDomingoPoster.jpg" />
-        <img id="textura_Mapa" src="imagenes/mapa_Fondo.jpg" />
-        <img id="franciscoPoster" src="imagenes/francisco_Poster.png" />
-        <img id="francisco1" src="imagenes/francisco.jpg" />
-        <img id="instruccionesPoster" src="imagenes/instruccionesPoster.jpg" />
-        <img id="instrucciones" src="imagenes/instrucciones.jpg" />
+        <img id="franciscoPoster" src="imagenes/francisco_Poster.webp" />
+        <img id="francisco1" src="imagenes/francisco.webp"/>
+        <img id="puentePiedra" src="imagenes/puentePiedra1.webp" />
+        <img id="puentePiedraPoster" src="imagenes/puentePiedra_Poster.webp" />
 
-        <img id="limaPoster" src="imagenes/lima.png" />
-        <img id="centroPoster" src="imagenes/centro.jpg" />
-        <img id="brujula" src="imagenes/brujula.png" />
+        <img id="boton_Disco" src="imagenes/boton_Disco.webp" />
+        <img id="musica_Fondo" src="imagenes/musica_Fondo.webp" />
+        <img id="musica" src="imagenes/musica.webp" />
+
+        <img id="textura_Mapa" src="imagenes/mapa_Fondo.webp" />
+
+        <img id="instruccionesPoster" src="imagenes/instruccionesPoster.webp" />
+        <img id="instrucciones" src="imagenes/instrucciones.webp" />
+        <img id="instrucciones2" src="imagenes/mapa_capturaDePantalla.jpg" />
+
+
+        <img id="brujula" src="imagenes/brujula.webp" />
 
 
         <!-- Mixins -->
@@ -113,24 +138,24 @@
       <!-- Modelos en la escena -->
       <a-entity gltf-model="#model-glb" position="0 0 0" scale="1 1 1" static-body></a-entity>
       <a-entity gltf-model="#model_2-glb" position="0 0.1 -70" scale="0.2 0.2 0.2" rotation="0 135 0" static-body></a-entity>
-      <a-entity gltf-model="#model_3-glb" position="0 0.1 70" scale="0.7 0.7 0.7" rotation="0 90 0" static-body></a-entity>
+      <a-entity gltf-model="#model_3-glb" position="0 0.2 68" scale="0.6 0.6 0.6" rotation="0 90 0" static-body></a-entity>
       <a-entity gltf-model="#model_4-glb" position="75 0.1 -37" scale="1 1 1.1" rotation="0 0 0" static-body></a-entity>
       <a-entity gltf-model="#model_6-glb" position="-75 0.1 -5" scale="0.2 0.2 0.2" rotation="0 135 0" static-body></a-entity>
     <!-- Paneles de control de canciones -->
           <!--  huaca -->
-          <a-entity controlador-canciones="id: panel1; position: -5 3 50; rotation: 0 120 0; songs: #song1, #song2, #song3"></a-entity>
+          <a-entity controlador-canciones="id: panel1; position: -5 3 50; rotation: 0 120 0; songs: #song1, #song_huaca, #song2"></a-entity>
           <a-entity mapa-interactivo="idMapa: mapa1; position: -5.9 3 47; rotation: 0 90 0"></a-entity>
       
                 <!--  Convento santo domingo -->
-          <a-entity controlador-canciones="id: panel2; position:  5 3 -50; rotation: 0 -60 0; songs: #song1, #song2, #song4"></a-entity>
+          <a-entity controlador-canciones="id: panel2; position:  5 3 -50; rotation: 0 -60 0; songs: #song3, #song_Domingo, #song4"></a-entity>
           <a-entity mapa-interactivo="idMapa: mapa2; position: 5.9 3 -47; rotation: 0 -90 0"></a-entity>
       
                 <!--  Puente de piedra -->
-          <a-entity controlador-canciones="id: panel3; position: 50 3 5; rotation: 0 -150 0; songs: #song2, #song3, #song4"></a-entity>
+          <a-entity controlador-canciones="id: panel3; position: 50 3 5; rotation: 0 -150 0; songs: #song5, #song_Puente, #song6"></a-entity>
           <a-entity mapa-interactivo="idMapa: mapa4; position: 47 3 5.9; rotation: 0 180 0"></a-entity>
       
                 <!--  San francisco -->
-          <a-entity controlador-canciones="id: panel4; position: -50 3 -5; rotation: 0 30 0; songs: #song1, #song3, #song4"></a-entity>
+          <a-entity controlador-canciones="id: panel4; position: -50 3 -5; rotation: 0 30 0; songs: #song7, #song_Francisco, #song8"></a-entity>
           <a-entity mapa-interactivo="idMapa: mapa5; position: -47 3 -5.9; rotation: 0 0 0"></a-entity>
       
                 <!-- Mapa del centro -->
@@ -226,13 +251,25 @@
 
           <a-entity
             id="instruccionesButton"
-            position="6 1 3"
+            position="6 1.5 3"
             mixin="frame"
             rotation="0 -90 0" 
             class="raycastable menu-button"
           >
             <a-entity material="src: #instrucciones;" mixin="poster"></a-entity>
           </a-entity>
+
+          
+          <a-entity
+            id="instrucciones2Button"
+            position="-6 1.5 3"
+            mixin="frame"
+            rotation="0 90 0" 
+            class="raycastable menu-button"
+          >
+            <a-entity material="src: #instrucciones;" mixin="poster"></a-entity>
+          </a-entity>
+
 
         </a-entity>
 
@@ -281,9 +318,17 @@
           <a-entity
           id="instruccionesInfoImage"
           mixin="infoImage"
-          material="src: #instruccionesPoster"
+          material="src: #musica"
           visible="false"
         ></a-entity>
+        
+        <a-entity
+        id="instrucciones2InfoImage"
+        mixin="infoImage"
+        material="src: #instrucciones2"
+        visible="false"
+      ></a-entity>
+
 
           <!-- Títulos y Descripciones -->
           <a-entity
@@ -308,8 +353,6 @@
         document.getElementById('loadingScreen').style.display = 'none';
       });
     </script>
-  
 
-  
   </body>
 </html>
