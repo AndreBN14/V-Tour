@@ -164,7 +164,14 @@
 
 
       <!-- Cámara -->
-      <a-entity id="camara" camera wasd-controls look-controls position="0 3 0"></a-entity>
+      <a-entity id="camara" 
+          camera 
+          wasd-controls="enabled: true"  
+          look-controls="enabled: true"  
+          movement-controls="controls: touchpad" 
+          position="0 3 0">
+      </a-entity>
+
       <a-entity cursor="rayOrigin: mouse" raycaster="objects: .raycastable"></a-entity>
 
       
@@ -353,6 +360,33 @@
         document.getElementById('loadingScreen').style.display = 'none';
       });
     </script>
+    <!-- Menú de selección de idiomas -->
+<div id="languageSelector" style="position: fixed; top: 10px; left: 10px; z-index: 10; background-color: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px;">
+  <label for="languages" style="color: white; font-size: 16px; margin-right: 10px;">Idioma:</label>
+  <select id="languages" style="padding: 5px; font-size: 14px;">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+  </select>
+</div>
+<script>
+  // Espera a que el DOM se cargue
+  window.addEventListener('DOMContentLoaded', function() {
+    // Obtener el elemento del selector de idiomas
+    var languageSelector = document.querySelector('#languages');
+
+    // Detectar cuando el usuario cambia el idioma
+    languageSelector.addEventListener('change', function() {
+      var selectedLanguage = languageSelector.value;
+
+      // Llamar a la función setLanguage para actualizar el idioma de los paneles
+      var infoPanelComponent = document.querySelector('[info-panel]').components['info-panel'];
+      if (infoPanelComponent) {
+        infoPanelComponent.setLanguage(selectedLanguage);  // Cambiar idioma
+      }
+    });
+  });
+</script>
+
 
   </body>
 </html>
